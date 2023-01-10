@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'pages/home_page.dart';
+import 'pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,16 +12,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //UI work done in build
     return MaterialApp(
-      home: Material(
-        //since container wasn't looking good we wrapped it with another widget material
-        child: Center(//again wrapped our container with centre to make text in centre
-          child: Container(
-            child: Text("Hello Vishal"),
-          ),
-        ),
+      //home: HomePage(),
+      themeMode: ThemeMode.light,
+      theme: ThemeData(
+          primarySwatch: Colors.lightBlue,
+          fontFamily: GoogleFonts.lato().fontFamily
       ),
+          //primaryTextTheme: GoogleFonts.latoTextTheme()), //this effect applied only on primary texts
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: "/login",
+      routes: {
+        "/": (context) => LoginPage(), //default
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage()
+      },
     );
   }
 }
