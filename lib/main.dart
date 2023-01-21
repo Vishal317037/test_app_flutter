@@ -3,7 +3,7 @@ import 'package:testproject/utils/routes.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:testproject/widgets/theme.dart';
 void main() {
   runApp(MyApp());
 }
@@ -14,16 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //home: HomePage(),
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: GoogleFonts.lato().fontFamily
-      ),
-          //primaryTextTheme: GoogleFonts.latoTextTheme()), //this effect applied only on primary texts
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: "/login",
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) => LoginPage(), //default
         MyRoutes.homeRoute: (context) => HomePage(),
